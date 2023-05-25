@@ -52,16 +52,16 @@ fun CompanyListingsScreen(
         ) {
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 items(state.companies.size) { i ->
+                    val company = state.companies[i]
+                    CompanyItem(company = company,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                //TODO: Navigate to detail screen
+                            }
+                            .padding(16.dp)
+                    )
                     if (i < state.companies.size) {
-                        val company = state.companies[i]
-                        CompanyItem(company = company,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable {
-                                    //TODO: Navigate to detail screen
-                                }
-                                .padding(16.dp)
-                        )
                         Divider(
                             modifier = Modifier.padding(
                                 horizontal = 16.dp

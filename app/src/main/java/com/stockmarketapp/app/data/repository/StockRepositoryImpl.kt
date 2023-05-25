@@ -37,15 +37,14 @@ class StockRepositoryImpl @Inject constructor(
 
             val isDbEmpty = localListings.isEmpty() && query.isBlank()
             val shouldJustLoadFromCache = !isDbEmpty && !fetchFromRemote
-            if (shouldJustLoadFromCache) {
+            if(shouldJustLoadFromCache) {
                 emit(Resource.Loading(false))
                 return@flow
             }
-
             val remoteListings = try {
                 val response = api.getListings()
                 companyListingParser.parse(response.byteStream())
-            } catch (e: IOException) {
+            } catch(e: IOException) {
                 e.printStackTrace()
                 emit(Resource.Error("Couldn't load data"))
                 null
@@ -61,12 +60,12 @@ class StockRepositoryImpl @Inject constructor(
                     listings.map { it.toCompanyListingEntity() }
                 )
                 emit(Resource.Success(
-                    data = dao.searchCompanyListing("")
+                    data = dao
+                        .searchCompanyListing("")
                         .map { it.toCompanyListing() }
                 ))
                 emit(Resource.Loading(false))
             }
-
         }
     }
 
