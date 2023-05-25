@@ -73,7 +73,6 @@ dependencies {
     implementation "androidx.compose.material:material-icons-extended:1.4.3"
 
     implementation "com.google.accompanist:accompanist-flowlayout:0.17.0"
-    implementation 'androidx.paging:paging-compose:1.0.0-alpha20'
     implementation "androidx.activity:activity-compose:1.8.0-alpha04"
     implementation "com.google.accompanist:accompanist-swiperefresh:0.24.2-alpha"
 
